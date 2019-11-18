@@ -1,44 +1,58 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'auth.dart';
+import 'auth_provider.dart';
 
-import 'package:flutterauth/auth_provider.dart';
-
-class Homepage extends StatelessWidget {
-  Homepage({
-    //this.auth, 
-    this.onSignedOut});
-  //final BaseAuth auth;
+class HomePage extends StatelessWidget {
+  const HomePage({this.onSignedOut});
   final VoidCallback onSignedOut;
-  
-  void _signOut(BuildContext context) async {
+
+  Future<void> _signOut(BuildContext context) async {
     try {
-      var auth = AuthProvider.of(context).auth;
-      await auth.signedOut();
+      final BaseAuth auth = AuthProvider.of(context).auth;
+      await auth.signOut();
       onSignedOut();
     } catch (e) {
       print(e);
     }
   }
-  
+
   @override
-  
   Widget build(BuildContext context) {
-    return new Scaffold(
-      appBar: new AppBar(
-        title: new Text('Welcome bar'),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Welcome'),
         actions: <Widget>[
-          new FlatButton(
-            child: new Text('Logout', style: new TextStyle(fontSize: 17.0, color: Colors.white),),
+          FlatButton(
+            child: Text('Logout', style: TextStyle(fontSize: 17.0, color: Colors.white)),
             onPressed: () => _signOut(context),
-          )
+          ),
+
+
+
+          PopupMenuButton(
+            itemBuilder: (BuildContext context){
+              return [
+                PopupMenuItem(
+                  child: FlatButton(
+                          child: Text('Logout', style: TextStyle(fontSize: 17.0, color: Colors.black)),
+                          onPressed: () => _signOut(context),
+                          ),
+                ),
+                
+              ];
+            },
+          ),
+
+
+
+
+
+
         ],
       ),
-      body: new Container(
-        child: new Center(
-          child: new Text('Welcome center', style: new TextStyle(fontSize: 20.0)),
-        ),
+      body: Container(
+        child: Center(child: Text('Welcome', style: TextStyle(fontSize: 32.0))),
       ),
     );
   }
 }
-
