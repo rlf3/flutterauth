@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'auth.dart';
 import 'home_page.dart';
 import 'login_page.dart';
-import 'auth_provider.dart';
-
+import 'package:flutterauth/services/auth_provider.dart';
+import 'package:flutterauth/services/auth.dart';
 class RootPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _RootPageState();

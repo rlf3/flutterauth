@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'auth.dart';
-import 'auth_provider.dart';
+import 'package:flutterauth/services/auth_provider.dart';
+import 'package:flutterauth/services/auth.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({this.onSignedOut});

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'auth.dart';
-import 'auth_provider.dart';
+import 'package:flutterauth/services/auth_provider.dart';
+import 'package:flutterauth/services/auth.dart';
 
 class EmailFieldValidator {
   static String validate(String value) {
@@ -117,7 +117,11 @@ class _LoginPageState extends State<LoginPage> {
       return <Widget>[
         RaisedButton(
           key: Key('signIn'),
-          child: Text('Login', style: TextStyle(fontSize: 20.0)),
+
+          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+          color: Colors.blue,
+
+          child: Text('Login', style: TextStyle(fontSize: 20.0, color: Colors.white)),
           onPressed: validateAndSubmit,
         ),
         FlatButton(

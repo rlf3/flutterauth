@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'auth.dart';
-import 'auth_provider.dart';
-import 'root_page.dart';
+import 'services/auth.dart';
+import 'services/auth_provider.dart';
+import 'pages/root_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,8 +12,9 @@ class MyApp extends StatelessWidget {
       auth: Auth(),
       child: MaterialApp(
         title: 'Flutter dev',
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.cyan,
+          primarySwatch: Colors.blue,
         ),
         home: RootPage(),
       ),
